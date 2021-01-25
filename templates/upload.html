@@ -5,7 +5,9 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
 <body>
-
+<h1> This simple website takes in an image and displays it back </h1>
+<p> This was made using Python, Flask, and hosted online on Heroku. <p>
+<p> Upload an image using the button below </p>
 <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
 
     <strong>Files:</strong><br>
@@ -27,7 +29,7 @@
 
             if ((ext == 'jpg') || (ext == 'png'))
             {
-                $("#msg").text("Files are supported")
+                $("#msg").text("Files are supported, click the upload button")
             }
             else
             {

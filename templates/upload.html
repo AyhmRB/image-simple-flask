@@ -2,19 +2,36 @@
 <html>
 <head>
 <title>Upload</title>
+<style>
+         body {
+            background: url("static/styles/bg.png") no-repeat center center fixed;  
+            -webkit-background-size:100% 100%;
+            -moz-background-size: 100% 100%;
+            -o-background-size: 100% 100%;
+            min-height: 100%;
+            min-width: 100%;
+            max-height: 101%;
+            max-width: 101%;
+         }
+</style>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+ <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/upload.css') }}">
 </head>
 <body>
-<h1> This simple website takes in an image and displays it back </h1>
-<p> This was made using Python, Flask, and hosted online on Heroku. <p>
-<p> Upload an image using the button below </p>
-<form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+    <div class="content">
+        <p class="t"> This simple website takes in an image and displays it back </p>
+        <p class="p1"> This was made using Python, Flask, and hosted online on Heroku.<p>
+        <p class="p2"> Upload an image using the button below </p>
+        <p class="p3"> Made by Amani and Samara </p>
+        <form class="f" id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+        
+            <strong >Files:</strong><br>
+            <input id="file-picker" class="fp" type="file" name="file" accept="image/*" multiple>
+            <div id="msg"></div>
+            <input class="btn" type="submit" value="Upload!" id="upload-button">
+        </form>
+    </div> 
 
-    <strong>Files:</strong><br>
-    <input id="file-picker" type="file" name="file" accept="image/*" multiple>
-    <div id="msg"></div>
-    <input type="submit" value="Upload!" id="upload-button">
-</form>
 </body>
 <script>
 
@@ -29,7 +46,11 @@
 
             if ((ext == 'jpg') || (ext == 'png'))
             {
-                $("#msg").text("Files are supported, click the upload button")
+                $("#msg").text("Files are supported, click the upload button");
+                $("#msg").css("position"," absolute");
+                $("#msg").css("top","28%");
+                $("#msg").css("left", "5%");
+                $("#msg").css("font-size", "26px");
             }
             else
             {

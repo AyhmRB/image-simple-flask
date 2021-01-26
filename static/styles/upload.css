@@ -1,0 +1,70 @@
+*{
+    font-family: Georgia;
+    color: #707070;
+}
+body{
+    background: url("bg.png") !important no-repeat center center fixed; 
+    -webkit-background-size:100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    min-height: 100%;
+    min-width: 100%;
+    max-height: 101%;
+    max-width: 101%;
+}
+.t{
+    position: absolute;
+    top: .1%;
+    left: 13.15%;
+    font-size: 40px;
+}
+.p1{
+    position: absolute;
+    top: 15%;
+    left: 19%;  
+    font-size: 30px;
+}
+.p2{
+    position: absolute;
+    top: 29%;
+    left: 31%;
+    font-size: 26px;
+}
+.f{
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    height: 50%;
+    width: 50%;
+}
+.btn{
+    position: absolute;
+    top: 40%;
+    left: 26%;
+    outline: none;
+    border: 2px solid gray;
+    height: 20%;
+    font-size: 26px;
+    width: 20%;
+    background: none;
+}
+strong{
+    position: absolute;
+    top: 0%;
+    left: 30%;
+    font-size: 26px;
+}
+.fp{
+    position: absolute;
+    top: 20%;
+    left: 25%;   
+}
+.p3{
+    position: absolute;
+    top: 95%;
+    left: 0%;
+}
+.content {
+    max-width: 500px;
+    margin: auto;
+  }

@@ -1,12 +1,24 @@
 import os
 
-from flask import Flask, request, render_template, send_from_directory
+from flask import Flask, request, render_template, send_from_directory, jsonify 
 
 app = Flask(__name__)
 
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+#Additional Tests
+@app.route("/callthis")
+def test():
+    return "<h1> hello there </h1>"
 
+@app.route("/testjson")
+def testjson(): 
+    x = {
+        "test":"value www",
+        "test2":"valuessdsaf"
+        }
+    return jsonify(x)
+#Additional Tests
 @app.route("/")
 def index():
     return render_template("upload.html")

@@ -4,4 +4,4 @@ flask_sqlalchemy==2.4.4
 gunicorn==20.0.4
 numpy==1.19.1
 joblib
-numpy
+

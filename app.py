@@ -25,10 +25,11 @@ def testjson():
         }
     return jsonify(x)
 
-@app.route("/ai", methods = ["POST"])
+@app.route("/ai")
 def predict():
     
-    lr = request.args.get('data')
+    #lr = request.args.get('data')
+    lr = "1,2,3,4,5"
     lr = lr.split(',')
     lr = np.array(lr).astype('float64')
     
@@ -39,7 +40,7 @@ def predict():
     
     y = str(y)
     
-    return y
+    return '[1,3,4]'
 #------------------------------------------Additional Tests
 #Additional Tests------------------------------------------
 

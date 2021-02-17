@@ -28,9 +28,8 @@ def testjson():
 @app.route("/ai", methods = ["POST"])
 def predict():
     
-    lr = request.args.get('data')
-    typelr = type(lr)
-    return lr,typelr
+    lr = request.form.get('data')
+    return lr
     try:
         lr = lr.split(',')
         lr = np.array(lr).astype('float64')

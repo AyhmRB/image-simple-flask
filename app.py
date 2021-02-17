@@ -29,6 +29,8 @@ def testjson():
 def predict():
     
     lr = request.args.get('data')
+    typelr = type(lr)
+    return lr,typelr
     try:
         lr = lr.split(',')
         lr = np.array(lr).astype('float64')

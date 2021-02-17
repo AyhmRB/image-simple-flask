@@ -27,42 +27,37 @@ def testjson():
 
 @app.route("/aiform", methods = ["POST"])
 def predict():
-    
     lr = request.form.get('data')
     try:
         lr = lr.split(',')
+    except: 
+        return "<h1> Error in splitting </h1>"
+    
+    try:    
         lr = np.array(lr).astype('float64')
-        
-        model = joblib.load('ai_test.joblib')
-        
-        y = model.predict(np.array([lr]).reshape(-1,1))
-        
-        
-        y = str(y)
-        
-        return y
     except:
-        return '<h1> Error in Handling Data </h1>'
+        return "<h1> error in coversion to float array </h1>"
     
-@app.route("/aiform2", methods = ["POST"])
-def predict():
-    
-    lr = request.form.get('data')
-    print('TYPE OF DATA IS ', str(type(lr)))
     try:
-        lr = lr.split(',')
-        lr = np.array(lr).astype('float64')
-        
         model = joblib.load('ai_test.joblib')
-        
+    except: 
+        return "<h1> error in loading model </h1>"
+    
+    try:
         y = model.predict(np.array([lr]).reshape(-1,1))
-        
-        
+    except:
+        return "<h1> error in predicting </h1>"
+    
+    try:    
         y = str(y)
-        
+    except:
+        return "<h1> error in converting to string </h1>"
+    
+    try:
         return y
     except:
-        return '<h1> Error in Handling Data </h1>'
+        return '<h1> Error in returning Y </h1>'
+    
 
 #------------------------------------------Additional Tests
 #Additional Tests------------------------------------------

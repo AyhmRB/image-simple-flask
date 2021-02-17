@@ -25,11 +25,10 @@ def testjson():
         }
     return jsonify(x)
 
-@app.route("/ai", methods = ["POST"])
+@app.route("/aiform", methods = ["POST"])
 def predict():
     
     lr = request.form.get('data')
-    return lr
     try:
         lr = lr.split(',')
         lr = np.array(lr).astype('float64')
@@ -44,6 +43,27 @@ def predict():
         return y
     except:
         return '<h1> Error in Handling Data </h1>'
+    
+@app.route("/aiform2", methods = ["POST"])
+def predict():
+    
+    lr = request.form.get('data')
+    print('TYPE OF DATA IS ', str(type(lr)))
+    try:
+        lr = lr.split(',')
+        lr = np.array(lr).astype('float64')
+        
+        model = joblib.load('ai_test.joblib')
+        
+        y = model.predict(np.array([lr]).reshape(-1,1))
+        
+        
+        y = str(y)
+        
+        return y
+    except:
+        return '<h1> Error in Handling Data </h1>'
+
 #------------------------------------------Additional Tests
 #Additional Tests------------------------------------------
 

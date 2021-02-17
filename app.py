@@ -9,13 +9,10 @@ app = Flask(__name__)
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-
-#------------------------------------------Additional Tests
-#Additional Tests------------------------------------------
+#Additional Tests
 @app.route("/callthis")
 def test():
     return "<h1> hello there </h1>"
-
 
 @app.route("/testjson")
 def testjson(): 
@@ -24,12 +21,12 @@ def testjson():
         "test2":"valuessdsaf"
         }
     return jsonify(x)
+#Additional Tests
 
-@app.route("/ai")
+@app.route("/ai", methods = ["POST"])
 def predict():
     
-    #lr = request.args.get('data')
-    lr = "1,2,3,4,5"
+    lr = request.args.get('data')
     lr = lr.split(',')
     lr = np.array(lr).astype('float64')
     
@@ -40,39 +37,9 @@ def predict():
     
     y = str(y)
     
-    return '[1,3,4]'
-#------------------------------------------Additional Tests
-#Additional Tests------------------------------------------
+    return y
 
-@app.route("/")
-def index():
-    return render_template("upload.html")
 
-@app.route("/upload", methods=["POST"])
-def upload():
-    target = os.path.join(APP_ROOT, 'images/')
-    print(target)
-    if not os.path.isdir(target):
-            os.mkdir(target)
-    else:
-        print("Couldn't create upload directory: {}".format(target))
-    print(request.files.getlist("file"))
-    for upload in request.files.getlist("file"):
-        print(upload)
-        print("{} is the file name".format(upload.filename))
-        filename = upload.filename
-        destination = "/".join([target, filename])
-        print ("Accept incoming file:", filename)
-        print ("Save it to:", destination)
-        upload.save(destination)
-
-    return render_template("complete.html", image_name=filename)
-
-@app.route('/upload/<filename>')
-def send_image(filename):
-    return send_from_directory("images", filename)
 
 if __name__ == "__main__":
     app.run()
-    
-
